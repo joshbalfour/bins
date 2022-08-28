@@ -5,6 +5,7 @@ import { Address } from '../entities/address'
 import { Bin } from '../entities/bin'
 import { AppDataSource } from '../data-source'
 import { updateAddressData } from '../data-update'
+import { getBinRegion } from '../get-bin-region'
 
 @Resolver(Address)
 export class AddressLookupResolver {
@@ -22,7 +23,8 @@ export class AddressLookupResolver {
       },
     })
     if (!addresses.length){
-      const results = await addressLookup(postcode)
+      const results = await addressLookup(normalizedPostcode)
+      const binRegion = await getBinRegion(normalizedPostcode)
       const storableAddresses = results.candidates
           .map(address => {
             const storableAddress = {
@@ -31,6 +33,7 @@ export class AddressLookupResolver {
               firstLine: address.address.split(',')[0],
               data: address.attributes,
               supported: false,
+              binRegion,
             }
             return storableAddress
           })

@@ -4,8 +4,6 @@ import { Column, Entity, Index, ManyToMany, OneToMany, PrimaryGeneratedColumn } 
 import { Bin } from './bin'
 import { Device } from './device'
 
-export type BinRegion = 'canterbury' | 'basingstoke' | 'birmingham' | 'bournemouth' | 'southampton'
-
 @ObjectType()
 @Entity()
 export class Address {
@@ -35,7 +33,7 @@ export class Address {
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  binRegion?: BinRegion
+  binRegion?: string
   
   @Column({ nullable: true })
   @Field({ nullable: true })
