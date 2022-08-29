@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@joshbalfour/bins-graphql-schema": "workspace:^",
+    "@joshbalfour/southwark-api": "workspace:^",
     "apollo-server": "^3.6.2",
     "graphql": "^15.3.0"
   }

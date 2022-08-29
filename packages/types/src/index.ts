@@ -1,5 +1,5 @@
 
-export type BinType = 'General' | 'Food' | 'Recycling' | 'Garden' | 'Black bin' | 'Red recycling' | 'Blue Recycling' | 'Glass'
+export type BinType = 'General' | 'Food' | 'Recycling' | 'Garden' | 'Black bin' | 'Red recycling' | 'Blue Recycling' | 'Glass' | 'Recycling Sack' | 'Refuse Sack' | 'Communal General'
 
 export type Outcome = 'Reported Missed' | 'Collection Made' | 'Side Waste' /* purple sacks */ | 
   'More Than 1 Bin' /* only 1 black bin per household*/ | 
