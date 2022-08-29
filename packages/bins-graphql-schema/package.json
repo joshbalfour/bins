@@ -18,6 +18,7 @@
     "@joshbalfour/birmingham-api": "workspace:^",
     "@joshbalfour/bournemouth-api": "workspace:^",
     "@joshbalfour/canterbury-api": "workspace:^",
+    "@joshbalfour/newcastle-api": "workspace:^",
     "@joshbalfour/reading-api": "workspace:^",
     "@joshbalfour/southampton-api": "workspace:^",
     "class-validator": "^0.13.2",

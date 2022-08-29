@@ -7,6 +7,8 @@ import * as birmingham from './birmingham'
 import * as bournemouth from './bournemouth'
 import * as southampton from './southampton'
 import * as aberdeen from './aberdeen'
+import * as reading from './reading'
+import * as newcastle from './newcastle'
 
 export const supportedBinRegions = [
   'canterbury',
@@ -15,6 +17,9 @@ export const supportedBinRegions = [
   'bournemouth',
   'southampton',
   'aberdeen',
+  'newcastle',
+  'newcastle-upon-tyne',
+  'reading',
 ]
 
 import { CollectionDates } from "./types"
@@ -45,6 +50,11 @@ export const findCollectionDates = async (address: Address): Promise<CollectionD
       return southampton.getCollectionDates(address)
     case 'aberdeen':
       return aberdeen.getCollectionDates(address)
+    case 'reading':
+      return reading.getCollectionDates(address)
+    case 'newcastle':
+    case 'newcastle-upon-tyne':
+      return newcastle.getCollectionDates(address)
     default:
       return []
   }
