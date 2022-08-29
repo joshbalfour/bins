@@ -1,8 +1,10 @@
 import fetch from 'node-fetch'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { CollectionDates, BinType } from './types'
 
+dayjs.extend(customParseFormat)
 dayjs.extend(utc)
 
 const offsetDate = (date: Date): Date => {
@@ -28,8 +30,7 @@ type APIResult = {
 
 const normalizeCollection = (collection: Collection) => {
   const binType = collection.service.replace('Collection Service', '').trim().replace('Waste', '').trim() as BinType
-  const date = dayjs(collection.date, 'DD/MM/YYYY HH:mm:SS').toDate()
-
+  const date = dayjs(collection.date.split(' ')[0], 'DD/MM/YYYY').toDate()
   return {
     binType,
     date: offsetDate(date),
