@@ -3,7 +3,7 @@ ARG APP_NAME
 
 WORKDIR /base
 COPY . ./
-RUN yarn install --frozen-lockfile
+RUN yarn install --immutable
 RUN cd packages/$APP_NAME && yarn build
 
 FROM nginx:stable-alpine
