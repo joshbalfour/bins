@@ -5,7 +5,7 @@ WORKDIR /base
 COPY . ./
 
 RUN rm -rf packages/bins-app \
-    && yarn install --immutable \
+    && yarn install \
     && cd packages/$APP_NAME \
     && yarn build \
     && rm -rf ../../.yarn/cache
