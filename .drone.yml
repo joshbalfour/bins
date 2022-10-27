@@ -18,7 +18,7 @@ steps:
 
   - name: worker
     image: plugins/docker
-    depends_on: ["clone"]
+    depends_on: ["graphql-server"]
     settings:
       username: josh
       password:
