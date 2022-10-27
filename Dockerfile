@@ -3,7 +3,11 @@ ARG APP_NAME
 
 WORKDIR /base
 COPY . ./
-RUN yarn install --immutable
-RUN cd packages/$APP_NAME && yarn build
 
-ENTRYPOINT ['yarn', 'start']
+RUN rm -rf packages/bins-app \
+    && yarn install --immutable \
+    && cd packages/$APP_NAME \
+    && yarn build \
+    && rm -rf ../../.yarn/cache
+
+ENTRYPOINT ['yarn', 'start:prod']
