@@ -1,0 +1,15 @@
+---
+kind: pipeline
+name: default
+
+steps:
+  - name: docker
+    image: plugins/docker
+    settings:
+      username: josh
+      password:
+        from_secret: docker_pat
+      repo: git.home.fa.gl/josh/bins
+      registry: git.home.fa.gl
+      tags: latest
+      custom_dns: 10.0.0.8

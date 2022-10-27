@@ -8,9 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "build:web": "expo build:web",
-    "publish": "expo publish",
-    "web:prod": "expo build:web && serve -s web-build"
+    "build": "expo build:web",
+    "publish": "expo publish"
   },
   "postinstall": "expo-yarn-workspaces",
   "dependencies": {
