@@ -4,9 +4,10 @@ ARG APP_NAME
 WORKDIR /base
 COPY . ./
 
+RUN npm install -g sharp-cli
+
 RUN yarn install --immutable \
     && cd packages/$APP_NAME \
-    && npm install -g sharp-cli \
     && yarn build \
     && rm -rf ../../.yarn/cache
 
