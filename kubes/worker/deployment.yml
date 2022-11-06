@@ -16,5 +16,3 @@ spec:
       containers:
       - image: git.home.fa.gl/josh/bins-worker:latest
         name: bins-worker
-        ports:
-        - containerPort: 4010

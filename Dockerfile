@@ -11,4 +11,4 @@ RUN yarn install \
     && yarn build \
     && rm -rf ../../.yarn/cache
 
-ENTRYPOINT ['yarn', 'start:prod']
+ENTRYPOINT ["yarn", "start:prod"]
