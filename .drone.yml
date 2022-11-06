@@ -1,0 +1,47 @@
+---
+kind: pipeline
+name: default
+
+steps:
+  - name: graphql-server
+    image: plugins/docker
+    depends_on: ["clone"]
+    settings:
+      username: josh
+      password:
+        from_secret: docker_pat
+      repo: git.home.fa.gl/josh/bins-graphql-server
+      cache_from: "git.home.fa.gl/josh/bins-graphql-server:latest"
+      build_args: "APP_NAME=bins-graphql-server"
+      registry: git.home.fa.gl
+      tags: latest
+      custom_dns: 10.0.0.8
+
+  - name: worker
+    image: plugins/docker
+    depends_on: ["clone"]
+    settings:
+      username: josh
+      password:
+        from_secret: docker_pat
+      repo: git.home.fa.gl/josh/bins-worker
+      cache_from: "git.home.fa.gl/josh/bins-worker:latest"
+      build_args: "APP_NAME=bins-worker"
+      registry: git.home.fa.gl
+      tags: latest
+      custom_dns: 10.0.0.8
+
+  - name: website
+    image: plugins/docker
+    depends_on: ["clone"]
+    settings:
+      username: josh
+      password:
+        from_secret: docker_pat
+      repo: git.home.fa.gl/josh/bins-website
+      cache_from: "git.home.fa.gl/josh/bins-website:latest"
+      build_args: "APP_NAME=bins-app"
+      dockerfile: Dockerfile.web
+      registry: git.home.fa.gl
+      tags: latest
+      custom_dns: 10.0.0.8

@@ -1,0 +1,8 @@
+.drone.yml
+Dockerfile
+Dockerfile.web
+flows.md
+README.md
+.vscode
+.editorconfig
+images
