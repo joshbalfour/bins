@@ -11,4 +11,6 @@ RUN yarn install \
     && yarn build \
     && rm -rf ../../.yarn/cache
 
+WORKDIR /base/packages/$APP_NAME
+
 ENTRYPOINT ["yarn", "start:prod"]
