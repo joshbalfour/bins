@@ -15,4 +15,4 @@ spec:
           service:
             name: bins-website
             port:
-              name: http
+              number: 80
