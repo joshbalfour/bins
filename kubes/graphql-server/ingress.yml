@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bins-graphql-server-ingress
+  annotations:
+    kubernetes.io/ingress.class: public
+spec:
+  rules:
+  - host: bins.home.fa.gl
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: bins-graphql-server
+            port:
+              name: http

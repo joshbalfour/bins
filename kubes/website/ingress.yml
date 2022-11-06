@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bins-website-ingress
+  annotations:
+    kubernetes.io/ingress.class: public
+spec:
+  rules:
+  - host: bins.home.fa.gl
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: bins-website
+            port:
+              name: http
