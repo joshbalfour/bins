@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bins-worker
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: bins-worker
+  template:
+    metadata:
+      labels:
+        app: bins-worker
+    spec:
+      containers:
+      - image: git.home.fa.gl/josh/bins-worker:latest
+        name: bins-worker
+        ports:
+        - containerPort: 4010
