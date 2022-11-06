@@ -8,9 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "build:web": "expo build:web",
-    "publish": "expo publish",
-    "web:prod": "expo build:web && serve -s web-build"
+    "build": "NODE_OPTIONS=--openssl-legacy-provider expo build:web",
+    "publish": "expo publish"
   },
   "postinstall": "expo-yarn-workspaces",
   "dependencies": {
@@ -49,7 +48,7 @@
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
-    "expo-cli": "5.4.11",
+    "expo-cli": "6.0.6",
     "expo-yarn-workspaces": "^1.7.0",
     "path": "^0.12.7",
     "serve": "^13.0.2",
