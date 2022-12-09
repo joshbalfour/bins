@@ -3,8 +3,7 @@ kind: ConfigMap
 metadata:
   name: bins-cm
 data:
-  db.properties: |
-    DB_HOST=10.0.0.36:5234
-    DB_USER=bins
-    DB_DATABASE=bins
-    DB_PASSWORD=
+  DB_HOST: 10.0.0.36:5234
+  DB_USER: bins
+  DB_DATABASE: bins
+  DB_PASSWORD: ""

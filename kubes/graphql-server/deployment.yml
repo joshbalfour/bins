@@ -18,3 +18,6 @@ spec:
         name: bins-graphql-server
         ports:
         - containerPort: 4010
+        envFrom:
+          - configMapRef:
+              name: bins-cm
