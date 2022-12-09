@@ -1,19 +1,20 @@
 FROM node:19-alpine as build
 ARG APP_NAME
 
-WORKDIR /base
+WORKDIR /build
 COPY . ./
 
 RUN npm install -g sharp-cli
 
-RUN yarn install --immutable \
+RUN yarn install --immutable --immutable-cache \
     && cd packages/$APP_NAME \
     && yarn build \
-    && rm -rf ../../.yarn/cache
+    && mkdir /app \
+    && cp -r web-build /app \
+    && rm -rf /build
 
 FROM nginx:stable-alpine
-ARG APP_NAME
-COPY --from=build /base/packages/$APP_NAME/web-build /usr/share/nginx/html
+COPY --from=build /app/web-build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

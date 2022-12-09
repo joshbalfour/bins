@@ -1,4 +1,4 @@
-import { AddressAttributes } from '@joshbalfour/canterbury-api'
+import type { AddressAttributes } from '@joshbalfour/canterbury-api'
 import { Field, ID, ObjectType } from 'type-graphql'
 import { Column, Entity, Index, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 import { Bin } from './bin'

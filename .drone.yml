@@ -7,6 +7,7 @@ steps:
     image: plugins/docker
     depends_on: ["clone"]
     settings:
+      purge: false
       username: josh
       password:
         from_secret: docker_pat
@@ -21,6 +22,7 @@ steps:
     image: plugins/docker
     depends_on: ["clone"]
     settings:
+      purge: false
       username: josh
       password:
         from_secret: docker_pat
@@ -35,6 +37,7 @@ steps:
     image: plugins/docker
     depends_on: ["clone"]
     settings:
+      purge: false
       username: josh
       password:
         from_secret: docker_pat

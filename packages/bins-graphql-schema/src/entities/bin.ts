@@ -1,4 +1,4 @@
-import { BinType } from '@joshbalfour/bins-types'
+import type { BinType } from '@joshbalfour/bins-types'
 import { Field, GraphQLISODateTime, ID, ObjectType } from 'type-graphql'
 import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm'
 
@@ -14,7 +14,7 @@ export class Bin {
   id: string
 
   @Column()
-  @Field()
+  @Field(() => String)
   type: BinType
 
   @OneToMany(() => BinCollection, (collection) => collection.bin, { eager: true })

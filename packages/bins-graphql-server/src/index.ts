@@ -1,4 +1,4 @@
-import { ApolloServer } from 'apollo-server'
+import { ApolloServer } from '@apollo/server'
 import { getSchema } from '@joshbalfour/bins-graphql-schema'
 
 const go = async () => {

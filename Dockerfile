@@ -1,16 +1,17 @@
 FROM node:19-alpine as build
 ARG APP_NAME
 
-WORKDIR /base
+WORKDIR /build
 COPY . ./
 
-RUN rm -rf packages/bins-app
-
-RUN yarn install \
+RUN yarn install --immutable --immutable-cache \
     && cd packages/$APP_NAME \
     && yarn build \
-    && rm -rf ../../.yarn/cache
+    && mkdir /app \
+    && cp dist/index.js /app \
+    && rm -rf /build
 
-WORKDIR /base/packages/$APP_NAME
-
-ENTRYPOINT ["yarn", "start:prod"]
+FROM node:19-alpine as run
+COPY --from=build /app /app
+WORKDIR /app
+CMD [ "node", "index.js" ]

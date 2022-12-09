@@ -22,7 +22,7 @@ if (!DB_DATABASE) {
 const [host, port] = DB_HOST.split(':')
 
 export const AppDataSource = new DataSource({
-  type: 'mysql',
+  type: 'postgres',
   synchronize: false,
   logging: false,
 

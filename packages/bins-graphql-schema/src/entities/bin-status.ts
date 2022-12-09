@@ -1,4 +1,4 @@
-import { Outcome } from "@joshbalfour/bins-types"
+import type { Outcome } from "@joshbalfour/bins-types"
 import { Field, GraphQLISODateTime, ID, ObjectType } from "type-graphql"
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm"
 import { Bin } from "./bin"
@@ -15,7 +15,7 @@ export class BinStatus {
   date: Date
 
   @Column()
-  @Field()
+  @Field(() => String)
   outcome: Outcome
 
   @ManyToOne(() => Bin, bin => bin.status)
