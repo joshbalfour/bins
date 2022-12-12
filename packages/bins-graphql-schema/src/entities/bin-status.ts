@@ -14,7 +14,7 @@ export class BinStatus {
   @Field(() => GraphQLISODateTime)
   date: Date
 
-  @Column()
+  @Column("varchar")
   @Field(() => String)
   outcome: Outcome
 

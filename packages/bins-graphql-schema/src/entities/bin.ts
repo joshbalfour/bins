@@ -13,7 +13,7 @@ export class Bin {
   @Field(() => ID)
   id: string
 
-  @Column()
+  @Column("varchar")
   @Field(() => String)
   type: BinType
 

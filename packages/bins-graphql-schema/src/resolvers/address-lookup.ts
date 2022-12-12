@@ -25,13 +25,13 @@ export class AddressLookupResolver {
     if (!addresses.length){
       const results = await addressLookup(normalizedPostcode)
       const binRegion = await getBinRegion(normalizedPostcode)
-      const storableAddresses = results.candidates
+      const storableAddresses = results.results
           .map(address => {
             const storableAddress = {
-              formatted: address.address,
-              postcode: address.attributes.POSTCODE,
-              firstLine: address.address.split(',')[0],
-              data: address.attributes,
+              formatted: address.LPI.ADDRESS,
+              postcode: address.LPI.POSTCODE_LOCATOR,
+              firstLine: address.LPI.ADDRESS.split(',').slice(0, 2).join(' '),
+              data: address.LPI,
               supported: false,
               binRegion,
             }
@@ -59,7 +59,7 @@ export class AddressLookupResolver {
   @FieldResolver()
   async bins (@Root() address: Address): Promise<Bin[]> {
     // if last updated over 24 hours ago, update the data
-    if (!address.lastUpdatedAt || !address.binRegion || Date.now() - address.lastUpdatedAt.getTime() > 24 * 60 * 60 * 1000) {
+    if (!address.lastUpdatedAt || !address.binRegion || Date.now() - (address.lastUpdatedAt?.getTime() ?? 0) > 24 * 60 * 60 * 1000) {
       await updateAddressData(address)
     }
 

@@ -10,6 +10,7 @@ const {
 	DB_PASSWORD,
 	TE,
 } = process.env
+
 if (!DB_HOST) {
   throw new Error('no DB_HOST env var set')
 }
@@ -22,7 +23,7 @@ if (!DB_DATABASE) {
 const [host, port] = DB_HOST.split(':')
 
 export const AppDataSource = new DataSource({
-  type: 'postgres',
+  type: 'mysql',
   synchronize: false,
   logging: false,
 
