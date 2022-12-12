@@ -15,7 +15,7 @@ spec:
           service:
             name: bins-graphql-server
             port:
-              number: 80
+              number: 4010
       - path: /
         pathType: Prefix
         backend:
