@@ -1,5 +1,7 @@
 import { AppDataSource } from "../../data-source"
 import { Address } from "../../entities/address"
+import { CollectionDates } from "./types"
+import { getBinRegion } from "../../get-bin-region"
 
 import * as canterbury from './canterbury'
 import * as basingstoke from './basingstoke'
@@ -11,6 +13,7 @@ import * as reading from './reading'
 import * as newcastle from './newcastle'
 import * as wandsworth from './wandsworth'
 import * as southwark from './southwark'
+import * as thanet from './thanet'
 
 export const supportedBinRegions = [
   'canterbury',
@@ -24,10 +27,9 @@ export const supportedBinRegions = [
   'reading',
   'wandsworth',
   'southwark',
+  'thanet',
 ]
 
-import { CollectionDates } from "./types"
-import { getBinRegion } from "../../get-bin-region"
 
 export const findCollectionDates = async (address: Address): Promise<CollectionDates[]> => {
   if (!address.binRegion) {
@@ -63,6 +65,8 @@ export const findCollectionDates = async (address: Address): Promise<CollectionD
       return wandsworth.getCollectionDates(address)
     case 'southwark':
       return southwark.getCollectionDates(address)
+    case 'thanet':
+      return thanet.getCollectionDates(address)
     default:
       return []
   }

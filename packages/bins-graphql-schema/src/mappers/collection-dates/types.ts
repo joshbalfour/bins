@@ -1,9 +1,10 @@
 import { BinType, Outcome } from "@joshbalfour/bins-types"
+export { BinType } from '@joshbalfour/bins-types'
 
 export type CollectionStatus = {
   outcome: Outcome
   date: Date
-  workpack: string
+  workpack?: string
   id: string
 }
 

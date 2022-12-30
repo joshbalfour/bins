@@ -5,4 +5,4 @@ export type Outcome = 'Reported Missed' | 'Collection Made' | 'Side Waste' /* pu
   'More Than 1 Bin' /* only 1 black bin per household*/ | 
   'Bin Not Out' | 'Wrong Bin Put Out' | 'Bin Contaminated' | 'Bin Broken' | 'Bin Too Heavy' | 'Unable To Access' | 
   'Road Closed' | 'Severe Weather' | 'Due For Collection' | 'Road Still Blocked' | 'Road Blocked' | 'Road Blocked - Access' | 
-  'Not Collected' | 'Not Subscribed' | 'Collection Delayed'  
+  'Not Collected' | 'Not Subscribed' | 'Collection Delayed' | string
