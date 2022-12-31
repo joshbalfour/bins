@@ -24,6 +24,9 @@ const collectionDatesToBins = (collections: ThanetCollection[], addressId: strin
 
   return [...binDates.keys()].map(type => {
     const ds = binDates.get(type) || []
+    if (!ds.length) {
+      return undefined
+    }
     const currentStatus = getLatestCollection(collections, ds[0].type)
 
     const collectionDates = binDates.get(type)?.map(({ date }) => date)
