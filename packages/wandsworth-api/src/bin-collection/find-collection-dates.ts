@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { CollectionDates, BinType } from './types'

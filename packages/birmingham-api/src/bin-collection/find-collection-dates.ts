@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import FormData from 'form-data'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -109,7 +108,7 @@ export const findCollectionDates = async (postcode: string, uprn: string): Promi
       ...headers,
       ...formData2.getHeaders(),
     },
-    body: formData2,
+    body: formData2.getBuffer(),
     method: 'POST',
   })
 

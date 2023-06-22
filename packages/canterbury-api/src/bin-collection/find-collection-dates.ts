@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import { defaultHeaders, stringToDateTime } from "../utils"
 import { BinDates, BinDatesAPIResponse, BinStatus, CollectionDates, Outcome } from "./types"
 

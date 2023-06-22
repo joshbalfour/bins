@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 
 export const getBinRegion = async (postcode: string) => {
   const url = 'https://www.gov.uk/find-local-council'

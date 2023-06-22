@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import * as Cheerio from 'cheerio'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
