@@ -1,4 +1,3 @@
-import nodeFetch from 'node-fetch'
 import { generateBody } from './generate-body';
 import { CollectionDates, BinType } from './types'
 import dayjs from 'dayjs'
@@ -39,15 +38,15 @@ export const findCollectionDates = async (uprn: string): Promise<CollectionDates
   const minDate = dayjs().format('YYYY-MM-DD')
   const maxDate = dayjs().add(1, 'year').format('YYYY-MM-DD')
 
-  const fetch = makeFetchCookie(nodeFetch)
-  const cookies = await getCookies(fetch)
+  const fetchC = makeFetchCookie(fetch)
+  const cookies = await getCookies(fetchC)
   const [phpsessid] = cookies.filter(c => c.startsWith('PHPSESSID='))
   if (!phpsessid) {
     throw new Error('no php session id')
   }
   const sessionId = phpsessid.split('PHPSESSID=')[1].split(';')[0]
   console.log('sessionId', sessionId)
-  const info = await getFSNumber(fetch, sessionId)
+  const info = await getFSNumber(fetchC, sessionId)
   console.log('info', info)
   const tokens = {
     "port": "",
@@ -90,9 +89,9 @@ export const findCollectionDates = async (uprn: string): Promise<CollectionDates
     "reference": info.reference,
     "process_prefix": "FS-Case-",
   }
-  const token = await getToken(fetch, sessionId, info.reference, tokens)
+  const token = await getToken(fetchC, sessionId, info.reference, tokens)
   const body = generateBody(uprn, sessionId, '', minDate, maxDate, token, tokens)
-  const res = await fetch("https://integration.aberdeencity.gov.uk/apibroker/runLookup?id=5a3141caf4016&repeat_against=&noRetry=true&getOnlyTokens=undefined&log_id=&app_name=AF-Renderer::Self&sid="+sessionId, {
+  const res = await fetchC("https://integration.aberdeencity.gov.uk/apibroker/runLookup?id=5a3141caf4016&repeat_against=&noRetry=true&getOnlyTokens=undefined&log_id=&app_name=AF-Renderer::Self&sid="+sessionId, {
     headers: {
       "content-type": "application/json",
     },

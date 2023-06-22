@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import { BinType, CollectionDates } from './types'
 
 const weirdDateToDate = (weirdDate: string): Date => {

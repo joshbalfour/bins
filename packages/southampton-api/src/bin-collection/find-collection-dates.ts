@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import FormData from 'form-data'
 import ical, { VEvent, CalendarComponent } from 'node-ical'
 import dayjs from 'dayjs'
@@ -33,7 +32,7 @@ export const findCollectionDates = async (uprn: string): Promise<CollectionDates
     headers: {
       ...formData.getHeaders(),
     },
-    body: formData,
+    body: formData.getBuffer(),
     method: 'POST',
   })
 

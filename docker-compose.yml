@@ -37,7 +37,7 @@ services:
   website:
     volumes:
       - .:/src
-    image: node:16-alpine
+    image: node:20-alpine
     working_dir: /src/packages/bins-app
     command: "yarn web:prod"
     ports:

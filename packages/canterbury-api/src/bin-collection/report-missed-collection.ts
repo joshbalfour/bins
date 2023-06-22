@@ -1,10 +1,9 @@
-import fetch from 'node-fetch'
 import makeFetchCookie from 'fetch-cookie'
 import FormData from 'form-data'
-import qs from 'query-string'
 
 import { BinType } from "./types"
 import { defaultHeaders } from "../utils"
+import qs from 'querystring'
 
 const formId = 782
 const formUrl = `https://forms.canterbury.gov.uk/xfp/form/${formId}`
@@ -94,7 +93,7 @@ export const reportMissed = async ({ uprn, firstLine, postcode, bin, workpack, f
       'Referrer-Policy': "strict-origin-when-cross-origin",
       ...form.getHeaders(),
     },
-    body: form,
+    body: form.getBuffer(),
     method: "POST"
   })
 
