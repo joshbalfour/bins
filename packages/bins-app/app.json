@@ -11,7 +11,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/8b88f618-62d9-48fa-852c-fcadca125ade"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,7 +20,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.joshbalfour.bins",
-      "buildNumber": "6"
+      "buildNumber": "7"
     },
     "android": {
       "adaptiveIcon": {
@@ -28,26 +29,24 @@
       },
       "googleServicesFile": "./google-services.json",
       "package": "com.joshbalfour.bins",
-      "versionCode": 6
+      "versionCode": 7
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "sentry-expo",
-      ["expo-notifications", {}]
-    ],
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "sentry",
-            "project": "bin-notifier",
-            "url": "https://sentry.joshbalfour.co.uk"
-          }
-        }
+      [
+        "expo-notifications",
+        {}
       ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8b88f618-62d9-48fa-852c-fcadca125ade"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }

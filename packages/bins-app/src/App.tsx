@@ -20,16 +20,7 @@ import { Privacy } from './routes/privacy'
 import { LandingPage } from './routes/landing-page'
 import { PushTokenHandler } from './components/PushTokenHandler'
 import { TextSmallBold } from './components/Text'
-import * as Sentry from 'sentry-expo'
 import { runOnStart } from './hooks/use-push-token-handler'
-
-const isWebAndProd = Platform.OS === 'web' && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('10.')
-
-Sentry.init({
-  dsn: "https://bfafe20b546448759a66a6edb1df8b83@sentry.joshbalfour.co.uk/2",
-  enableInExpoDevelopment: !isWebAndProd,
-  debug: true, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
-})
 
 runOnStart().catch(console.error)
 
@@ -70,14 +61,12 @@ const useUpdater = () => {
           return Updates.fetchUpdateAsync()
             .then(Updates.reloadAsync)
             .catch(e => {
-              Sentry.Native.captureException(e)
               console.error(e)
               Updates.reloadAsync()
             })
         }
       }).catch((e) => {
         setCheckingForUpdates(false)
-        Sentry.Native.captureException(e)
         console.error(e)
       })
   }, [])
@@ -112,20 +101,22 @@ const App = () => {
   if (!fontsLoaded) {
     return (
       <Containers>
+        <StatusBar style="light" backgroundColor={offBlack} />
         <LoadingContainer>
-          <Loading style={{
+          {/* <Loading style={{
             top: '40%',
             left: '50%',
             marginLeft: -16
-          }} />
+          }} /> */}
         </LoadingContainer>
       </Containers>
     )
   }
 
-  if (checkingForUpdates || isUpdating) {
+  if (isUpdating) {
     return (
       <Containers>
+        <StatusBar style="light" backgroundColor={offBlack} />
         <LoadingContainer>
           <Loading style={{
             top: '40%',

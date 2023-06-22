@@ -52,6 +52,10 @@ const PushNotificationButton = () => {
     await requestPermissionsAsync()
   }
 
+  if (Platform.OS === 'web') {
+    return null
+  }
+
   return <Button loading={loading || deviceLoading} text={
     status ? (
       (status.granted && device) ? 'Disable Notifications' : (
