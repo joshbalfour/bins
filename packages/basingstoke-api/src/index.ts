@@ -3,5 +3,3 @@
 
 export * from './bin-collection'
 export * from './bin-collection/types'
-
-import './bin-collection/old'
