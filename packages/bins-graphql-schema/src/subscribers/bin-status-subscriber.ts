@@ -1,12 +1,21 @@
+import { BinType } from "@joshbalfour/bins-types"
 import { EntitySubscriberInterface, EventSubscriber, UpdateEvent } from "typeorm"
 import { AppDataSource } from "../data-source"
 import { BinStatus } from "../entities"
 import { notEmpty } from "../mappers/collection-dates/utils"
 import { PushNotification, sendPushNotifications } from "../push"
 
+const getBinTypeString = (binType: BinType) => {
+  if (binType.toLowerCase().includes('bin') || binType.toLowerCase().includes('box')) {
+    return binType
+  }
+
+  return `${binType} bin`
+}
+
 const getStatusChangeNotifications = (statusChange: BinStatus): PushNotification[] => {
-  const body =`Your ${statusChange.bin.type} is now ${statusChange.outcome}`
-  const title = `${statusChange.bin.type} bin update`
+  const body =`Your ${getBinTypeString(statusChange.bin.type)} is now ${statusChange.outcome}`
+  const title = `${getBinTypeString(statusChange.bin.type)} update`
   return statusChange.bin.address.devices?.map(device => {
     return {
       device,
