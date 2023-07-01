@@ -21,3 +21,5 @@ spec:
         envFrom:
           - configMapRef:
               name: bins-cm
+          - secretRef:
+              name: db-secret
