@@ -1,26 +1,19 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: bins-graphql-server-ingress
 spec:
+  routes:
+  - kind: Rule
+    match: (Host(`bins.joshbalfour.co.uk`) || Host(`bins.home.fa.gl`)) && PathPrefix(`/api`)
+    services:
+    - name: bins-graphql-server
+      port: 4010
+  - kind: Rule
+    match: Host(`bins.joshbalfour.co.uk`) || Host(`bins.home.fa.gl`)
+    services:
+    - name: bins-website
+      port: 80
   tls:
-    - hosts:
-      - bins.home.fa.gl
-  rules:
-    - host: bins.home.fa.gl
-      http:
-        paths:
-          - backend:
-              service:
-                name: bins-graphql-server
-                port:
-                  number: 4010
-            path: /api
-            pathType: Prefix
-          - backend:
-              service:
-                name: bins-website
-                port:
-                  number: 80
-            path: /
-            pathType: Prefix
+    domains:
+    - main: bins.home.fa.gl
