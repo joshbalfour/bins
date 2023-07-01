@@ -1,5 +1,3 @@
-import { CronJob } from 'cron'
-
 import { initializeDataSource } from "@joshbalfour/bins-graphql-schema"
 import { collectionNextDay } from "./jobs/collection-next-day"
 import { updateAllData } from "./jobs/update-data"
@@ -27,18 +25,10 @@ const init = async () => {
   await initializeDataSource()
   console.log('done initialising data source')
 
-  console.log('initialising cron job')
-  new CronJob(
-    '1 * * * *',
-    function() {
-      console.log('cron initiated')
-      go().catch(console.error)
-    },
-    null,
-    true,
-    'Europe/London'
-  )
-  console.log('done initialising cron job')
+  await go()
 }
 
-init().catch(console.error)
+init().catch((e) => {
+  console.error(e)
+  process.exit(1)
+})
