@@ -4,8 +4,5 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ],
-  "resolutions": {
-    "ts-invariant@^0.4.0": "^0.10.3"
-  }
+  ]
 }

@@ -1,3 +1,4 @@
+import { In, MoreThan, MoreThanOrEqual } from "typeorm"
 import { AppDataSource } from "./data-source"
 import { Address, Bin, BinCollection, BinStatus } from "./entities"
 import { findCollectionDates } from "./mappers/collection-dates"
@@ -9,6 +10,14 @@ export const updateAddressData = async (address: Address) => {
   const collectionDates = await findCollectionDates(address)
   const statuses: BinStatus[] = []
   const collections: BinCollection[] = []
+
+  // delete bin collections for today onwards for bins we're adding new collection data for
+  const now = new Date()
+  now.setUTCHours(0,0,0,0)
+  await binCollectionRepository.delete({
+    binId: In(collectionDates.map(({ id }) => id)),
+    date: MoreThanOrEqual(now)
+  })
 
   const storableBins = await Promise.all(collectionDates.map(async (collectionDate) => {
     const cd = binRepository.create({

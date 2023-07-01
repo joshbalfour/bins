@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: bins-worker-cron
+spec:
+  schedule: "1 * * * *"
+  successfulJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - image: git.home.fa.gl/josh/bins-worker:latest
+            name: bins-worker
+            envFrom:
+              - configMapRef:
+                  name: bins-cm
+              - secretRef:
+                  name: db-secret
+          restartPolicy: Never
