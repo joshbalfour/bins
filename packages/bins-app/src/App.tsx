@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { Platform, StyleSheet, View } from 'react-native'
+import { Platform, StyleSheet, View, LogBox } from 'react-native'
 import { Router } from './router'
 import { Route, Routes, useNavigate } from 'react-router'
 import { ApolloProvider } from '@apollo/client'
@@ -23,6 +23,10 @@ import { TextSmallBold } from './components/Text'
 import { runOnStart } from './hooks/use-push-token-handler'
 
 runOnStart().catch(console.error)
+
+LogBox.ignoreLogs([
+  `Constants.platform.ios.model has been deprecated in favor of expo-device's Device.modelName property. This API will be removed in SDK 45.`,
+])
 
 const Redirect = () => {
   const { homeAddressId, loading } = useHomeAddressId()
