@@ -7,3 +7,4 @@ data:
   DB_USER: bins
   DB_DATABASE: bins
   DB_PASSWORD: ""
+  TZ: Europe/London
