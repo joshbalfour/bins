@@ -26,6 +26,7 @@ const init = async () => {
   console.log('done initialising data source')
 
   await go()
+  process.exit(0)
 }
 
 init().catch((e) => {
