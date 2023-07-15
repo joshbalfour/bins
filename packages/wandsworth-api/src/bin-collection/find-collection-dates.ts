@@ -54,5 +54,3 @@ export const findCollectionDates = async (fullAddress: string): Promise<Collecti
     collectionDates: [next, subsequent, subsequent2].map(zeroDate).map(offsetDate),
   }))
 }
-
-findCollectionDates('MAISONETTE FIRST AND SECOND FLOORS B, 37 AUCKLAND ROAD, LONDON, WANDSWORTH, SW11 1EW').then(console.log).catch(console.error)

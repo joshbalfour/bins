@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: bins-worker-cron
+  name: bins-worker-next-day-cron
 spec:
-  schedule: "30 * * * *"
+  schedule: "0 17 * * *"
   successfulJobsHistoryLimit: 10
   jobTemplate:
     spec:
@@ -12,6 +12,8 @@ spec:
           containers:
           - image: git.home.fa.gl/josh/bins-worker:latest
             name: bins-worker
+            args: ['index.js', '--next-day']
+            command: ['node']
             envFrom:
               - configMapRef:
                   name: bins-cm

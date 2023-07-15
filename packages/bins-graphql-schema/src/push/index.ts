@@ -31,8 +31,10 @@ export const sendPushNotifications = async (notifications: PushNotification[]) =
 
   await Promise.all(validNotifs.map(async ({ notif, device }) => {
     try {
+      console.log('sending notification', JSON.stringify(notif))
       const [ticket] = await expo.sendPushNotificationsAsync([notif])
       if (ticket.status === 'ok') {
+        console.log('sent notification', JSON.stringify(notif))
         const notificationRepository = AppDataSource.getRepository(Notification)
         await notificationRepository.save(
           notificationRepository.create({
@@ -44,6 +46,7 @@ export const sendPushNotifications = async (notifications: PushNotification[]) =
       }
       const error = ticket.details?.error
       if (error) {
+        console.log('error sending notification', JSON.stringify(error))
         switch (error) {
           case 'DeviceNotRegistered':
             invalidDevices.push(device)

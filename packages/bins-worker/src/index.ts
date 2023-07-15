@@ -3,21 +3,11 @@ import { collectionNextDay } from "./jobs/collection-next-day"
 import { updateAllData } from "./jobs/update-data"
 import { processNotificationReceipts } from "./jobs/process-notification-receipts"
 
-const isIt5pm = () => {
-  const now = new Date()
-  const isIt = now.getHours() === 17
-  return isIt
-}
-
 const go = async () => {
-  console.log('worker started')
+  console.log('data update worker started')
   await updateAllData()
   await processNotificationReceipts()
-  
-  if (isIt5pm()) {
-    await collectionNextDay()
-  }
-  console.log('worker finished')
+  console.log('data update worker finished')
 }
 
 const init = async () => {
@@ -25,7 +15,13 @@ const init = async () => {
   await initializeDataSource()
   console.log('done initialising data source')
 
-  await go()
+  if (process.argv[2] === '--next-day') {
+    console.log('next collection day check started')
+    await collectionNextDay()
+    console.log('next collection day check finished')
+  } else {
+    await go()
+  }
   process.exit(0)
 }
 
