@@ -7,7 +7,6 @@ steps:
     image: plugins/kaniko
     depends_on: ["clone"]
     settings:
-      purge: false
       username: josh
       password:
         from_secret: docker_pat
@@ -15,13 +14,11 @@ steps:
       build_args: "APP_NAME=bins-graphql-server"
       registry: git.home.fa.gl
       tags: latest
-      custom_dns: 10.0.0.8
 
   - name: worker
     image: plugins/kaniko
     depends_on: ["clone"]
     settings:
-      purge: false
       username: josh
       password:
         from_secret: docker_pat
@@ -29,13 +26,11 @@ steps:
       build_args: "APP_NAME=bins-worker"
       registry: git.home.fa.gl
       tags: latest
-      custom_dns: 10.0.0.8
 
   - name: website
     image: plugins/kaniko
     depends_on: ["clone"]
     settings:
-      purge: false
       username: josh
       password:
         from_secret: docker_pat
@@ -44,4 +39,3 @@ steps:
       dockerfile: Dockerfile.web
       registry: git.home.fa.gl
       tags: latest
-      custom_dns: 10.0.0.8
