@@ -4,7 +4,7 @@ ARG APP_NAME
 WORKDIR /build
 COPY . ./
 
-RUN yarn install --immutable --immutable-cache \
+RUN yarn install --immutable \
     && cd packages/$APP_NAME \
     && yarn build \
     && mkdir /app \
