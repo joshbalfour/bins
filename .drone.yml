@@ -4,7 +4,7 @@ type: kubernetes
 
 steps:
   - name: graphql-server
-    image: plugins/docker
+    image: plugins/kaniko
     depends_on: ["clone"]
     settings:
       purge: false
@@ -19,7 +19,7 @@ steps:
       custom_dns: 10.0.0.8
 
   - name: worker
-    image: plugins/docker
+    image: plugins/kaniko
     depends_on: ["clone"]
     settings:
       purge: false
@@ -34,7 +34,7 @@ steps:
       custom_dns: 10.0.0.8
 
   - name: website
-    image: plugins/docker
+    image: plugins/kaniko
     depends_on: ["clone"]
     settings:
       purge: false
