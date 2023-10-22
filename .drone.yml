@@ -3,16 +3,16 @@ name: default
 type: kubernetes
 
 steps:
-  - name: create sbom
-    image: node
-    depends_on: ["clone"]
-    environment:
-      FETCH_LICENSE: true
-      API_KEY:
-        from_secret: dependency-track
-    commands:
-    - corepacke enable && corepack prepare --activate yarn@*
-    - yarn dlx @cyclonedx/cdxgen --api-key $API_KEY --server-url https://api-sbom.home.fa.gl --project-name bins --project-version "$(git branch --show-current)"
+  # - name: create sbom
+  #   image: node
+  #   depends_on: ["clone"]
+  #   environment:
+  #     FETCH_LICENSE: true
+  #     API_KEY:
+  #       from_secret: dependency-track
+  #   commands:
+  #   - corepacke enable && corepack prepare --activate yarn@*
+  #   - yarn dlx @cyclonedx/cdxgen --api-key $API_KEY --server-url https://api-sbom.home.fa.gl --project-name bins --project-version "$(git branch --show-current)"
 
   - name: graphql-server
     image: plugins/kaniko
