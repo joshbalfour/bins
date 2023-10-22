@@ -200,7 +200,7 @@ export const Step2 = () => {
         <Button text={"Back"} variant="text" onClick={() => {
           navigate(-1)
         }} />
-        <Button text={"Continue"} disabled={!addressId} to={`/signup/${Platform.OS === 'web' ? 'home' : 'address'}/${addressId}`} />
+        <Button text={"Continue"} disabled={!addressId} to={`/signup/address/${addressId}`} />
       </Footer>
     </Body>
   )
