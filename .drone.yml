@@ -7,6 +7,7 @@ steps:
     image: node
     depends_on: ["clone"]
     environment:
+      FETCH_LICENSE: true
       API_KEY:
         from_secret: dependency-track
     commands:
