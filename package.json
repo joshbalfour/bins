@@ -6,7 +6,6 @@
     "packages/*"
   ],
   "resolutions": {
-    "@expo/prebuild-config@5.0.7": "~6.0.0",
     "@expo/config-plugins": "~6.0.0"
   }
 }
