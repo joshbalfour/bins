@@ -27,5 +27,5 @@ jobs:
           file: Dockerfile.web
           push: true
           tags: git2.home.fa.gl/boi/bins-website:latest
-          build-args:
-            APP_NAME: bins-app
+          build-args: |
+            APP_NAME=bins-app

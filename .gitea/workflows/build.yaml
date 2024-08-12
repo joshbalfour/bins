@@ -28,5 +28,5 @@ jobs:
         with:
           push: true
           tags: git2.home.fa.gl/boi/${{ matrix.package }}:latest
-          build-args:
-            APP_NAME: ${{ matrix.package }}
+          build-args: |
+            APP_NAME=${{ matrix.package }}
