@@ -28,4 +28,4 @@ jobs:
           push: true
           tags: git2.home.fa.gl/boi/bins-website:latest
           build-args:
-          - APP_NAME: bins-app
+            APP_NAME: bins-app
