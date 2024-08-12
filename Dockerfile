@@ -1,10 +1,11 @@
-FROM node:21-alpine as build
+FROM node:22-alpine as build
 ARG APP_NAME
 
 WORKDIR /build
 COPY . ./
 
-RUN yarn install --immutable \
+RUN corepack enable \
+    && yarn install --immutable \
     && cd packages/$APP_NAME \
     && yarn build \
     && mkdir /app \
