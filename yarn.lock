@@ -4049,10 +4049,12 @@ __metadata:
     form-data: "npm:^4.0.0"
     graphql: "npm:^16.9.0"
     graphql-iso-date: "npm:^3.6.1"
+    graphql-scalars: "npm:^1.23.0"
     mysql2: "npm:^3.11.0"
     postcode: "npm:^5.1.0"
     reflect-metadata: "npm:^0.2.2"
     type-graphql: "npm:2.0.0-rc.2"
+    typedi: "npm:^0.10.0"
     typeorm: "npm:^0.3.20"
     typeorm-typedi-extensions: "npm:^0.4.1"
     typescript: "npm:^5.5.4"
@@ -11358,6 +11360,17 @@ __metadata:
   peerDependencies:
     graphql: ^14.6.0 || ^15.0.0 || ^16.0.0
   checksum: 10/4c91af56d02a54d9981b4a5004703c61de920b91245d9883707b70a244cfe5ecc1c75b322979d639ef86841c46e601a1fe48b2c3b4e06d0733876fb9cb9cb9a3
+  languageName: node
+  linkType: hard
+
+"graphql-scalars@npm:^1.23.0":
+  version: 1.23.0
+  resolution: "graphql-scalars@npm:1.23.0"
+  dependencies:
+    tslib: "npm:^2.5.0"
+  peerDependencies:
+    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: 10/6faa5dea621b708b485cb8c5047098c3daf7c092c8f1f53b87ff6999ef0b28553e5c904ddc01da54141685fcd5798672c4cf997d9738a04dd4e60529450ab707
   languageName: node
   linkType: hard
 
@@ -19340,6 +19353,13 @@ __metadata:
   version: 0.0.6
   resolution: "typedarray@npm:0.0.6"
   checksum: 10/2cc1bcf7d8c1237f6a16c04efc06637b2c5f2d74e58e84665445cf87668b85a21ab18dd751fa49eee6ae024b70326635d7b79ad37b1c370ed2fec6aeeeb52714
+  languageName: node
+  linkType: hard
+
+"typedi@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "typedi@npm:0.10.0"
+  checksum: 10/3d519795b4d1a9edea2e5fdb9fa61bc2eca00546aeaf2dbbc1597cfed021659ca117454913022828c77f4971dd03f38a3f9a646eda374ccfb565d3ddcb661224
   languageName: node
   linkType: hard
 
