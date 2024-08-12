@@ -1,13 +1,6 @@
 name: Build and Publish docker containers
 run-name: ${{ gitea.actor }} is running stuff 🚀
-on:
-  push:
-    branches:
-    - main
-    - "*"
-  pull_request:
-    branches:
-    - main
+on: [push]
 
 jobs:
   build-docker:
