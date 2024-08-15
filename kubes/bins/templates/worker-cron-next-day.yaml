@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: bins-worker-cron
+  name: {{ include "bins.fullname" . }}-worker-cron-next-day
 spec:
   schedule: "0 17 * * *"
   successfulJobsHistoryLimit: 5
