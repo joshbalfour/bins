@@ -1,5 +1,7 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "bins.fullname" . -}}
+{{- $svcPortGql := .Values.graphql.service.port -}}
+{{- $svcPortWeb := .Values.website.service.port -}}
 {{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/ingress.class") }}
   {{- $_ := set .Values.ingress.annotations "kubernetes.io/ingress.class" .Values.ingress.className}}
@@ -50,10 +52,10 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  number: {{ .Values.graphql.service.port }}
+                  number: {{ $svcPortGql }}
               {{- else }}
               serviceName: {{ $fullName }}
-              servicePort: {{ .Values.graphql.service.port }}
+              servicePort: {{ $svcPortGql }}
               {{- end }}
           {{- end }}
     {{- end }}
@@ -71,10 +73,10 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  number: {{ .Values.website.service.port }}
+                  number: {{ $svcPortWeb }}
               {{- else }}
               serviceName: {{ $fullName }}
-              servicePort: {{ .Values.website.service.port }}
+              servicePort: {{ $svcPortWeb }}
               {{- end }}
           {{- end }}
     {{- end }}
