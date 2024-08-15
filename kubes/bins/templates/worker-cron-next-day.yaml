@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: bins-worker-cron
+spec:
+  schedule: "0 17 * * *"
+  successfulJobsHistoryLimit: 5
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          securityContext:
+            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+          containers:
+          - image: {{ .Values.worker.image }}
+            name: {{ .Chart.Name }}-worker
+            args: ['index.js', '--next-day']
+            command: ['node']
+            securityContext:
+              {{- toYaml .Values.securityContext | nindent 14 }}
+            envFrom:
+            - configMapRef:
+                name: {{ include "bins.fullname" . }}-configmap
+          restartPolicy: Never
