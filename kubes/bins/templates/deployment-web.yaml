@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "bins.fullname" . }}-graphql
+  name: {{ include "bins.fullname" . }}-web
 spec:
   replicas: {{ .Values.graphql.replicaCount }}
   selector:
     matchLabels:
-       app: {{ include "bins.fullname" . }}-graphql
+       app: {{ include "bins.fullname" . }}-web
   template:
     metadata:
       labels:
-        app: {{ include "bins.fullname" . }}-graphql
+        app: {{ include "bins.fullname" . }}-web
     spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}-graphql
+        - name: {{ .Chart.Name }}-web
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.graphql.image }}"
+          image: "{{ .Values.website.image }}"
           ports:
-            - name: graphql
-              containerPort: {{ .Values.graphql.service.port }}
+            - name: website
+              containerPort: {{ .Values.website.service.port }}
               protocol: TCP
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
