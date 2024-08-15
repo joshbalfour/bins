@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "bins.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "bins.fullname" . }}-graphql:{{ .Values.service.port }}']
   restartPolicy: Never

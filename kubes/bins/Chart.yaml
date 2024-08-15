@@ -5,10 +5,11 @@ type: application
 version: 0.1.0
 appVersion: "latest"
 home: https://bins.joshbalfour.co.uk
-sources: https://github.com/joshbalfour/bins
+sources: 
+- https://github.com/joshbalfour/bins
 
 dependencies:
 - name: mariadb
   version: 19.0.3
   repository: https://charts.bitnami.com/bitnami
-  condition: configMap.storage.deploy
+  condition: mariadb.deploy

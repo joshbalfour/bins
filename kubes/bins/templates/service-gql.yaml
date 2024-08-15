@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bins.fullname" . }}-graphql
+spec:
+  type: {{ .Values.graphql.service.type }}
+  ports:
+    - port: {{ .Values.graphql.service.port }}
+      targetPort: 4010
+      protocol: TCP
+      name: gql
+  selector:
+    app: {{ include "bins.fullname" . }}-graphql
