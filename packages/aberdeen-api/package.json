@@ -7,11 +7,11 @@
   },
   "main": "src/index.ts",
   "devDependencies": {
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4"
   },
   "dependencies": {
-    "dayjs": "^1.11.10",
-    "fetch-cookie": "^2.1.0"
+    "dayjs": "^1.11.12",
+    "fetch-cookie": "^3.0.1"
   }
 }

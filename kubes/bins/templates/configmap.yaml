@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "bins.fullname" . }}-configmap
+data:
+  DB_HOST: {{ include "bins.fullname" . }}-mariadb
+  TZ: {{ .Values.timezone }}
+  DB_DATABASE: {{ .Values.mariadb.auth.database }}
+  DB_USER: root

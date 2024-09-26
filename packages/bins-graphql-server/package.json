@@ -1,19 +1,18 @@
 {
   "name": "@joshbalfour/bins-graphql-server",
-  "packageManager": "yarn@3.1.1",
   "scripts": {
     "start": "tsup --watch --onSuccess 'node dist/index.js'",
     "start:prod": "node dist",
     "build": "tsup"
   },
   "devDependencies": {
-    "@swc/core": "^1.3.94",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "@swc/core": "^1.7.10",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@apollo/server": "^4.9.4",
+    "@apollo/server": "^4.11.0",
     "@joshbalfour/bins-graphql-schema": "workspace:^",
-    "graphql": "^16.8.1"
+    "graphql": "^16.9.0"
   }
 }
